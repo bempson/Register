@@ -1,0 +1,55 @@
+<div ng-controller="ProductCtrl">
+
+    <h1 class="page-header">Products</h1>
+    <div>
+		<a ng-click="newProd" href="#/new-prod">
+			<button type="button" class="btn btn-success">New Product</button>
+	   </a>
+	</div>
+
+	<hr>
+    <div>
+		<span class="col-md-1" style="font-weight:bold">Search</span>
+		<span class="col-md-3">
+		<input type="text" class="form-control" ng-model="searchKeyword"/>
+		</span>
+    </div>
+    <div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="25px">ID</th>
+                <th>Name</th>
+                <th>Description </th>
+                <th>Item_number </th>
+                <th>Barcode</th>
+                <th>Category </th>
+                <th>Department</th>
+                <th>Unit Price </th>
+                <th>In Stock</th>
+                <th width="50px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="e in products  | filter: searchKeyword">
+                <td>{{e.id}}</td>
+                <td>{{e.name}}</td>
+                <td>{{e.description}}</td>
+                <td>{{e.item_number}}</td>
+                <td>{{e.barcode}}</td>
+                <td>{{e.category.name}}</td>
+                <td>{{e.department.name}}</td>
+                <td>{{e.unit_price | currency}}</td>
+                <td>{{e.units_in_stock}}</td>
+                <td><a ng-click="editProduct($index)">
+					    <i class="icon-pencil"></i>
+                    </a>             
+                    <a ng-click="delPost($index)">
+				        <i class="icon-remove-circle"></i>
+				    </a>
+			    </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>

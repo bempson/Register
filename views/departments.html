@@ -1,0 +1,33 @@
+<div ng-controller="DepartmentsCtrl">
+    <h1 class="page-header">Departments</h1>
+    
+     <a ng-click="newDep" href="#/new-dep">
+		<button type="button" class="btn btn-success">New Department</button>
+	</a>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="25px">ID</th>
+                <th>Name</th>
+                <th>Description </th>
+                <th width="50px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="e in departments">
+                <td>{{e.id}}</td>
+                <td>{{e.name}}</td>
+                <td>{{e.description}}</td>
+                <td><a ng-click="editProduct($index)">
+					    <i class="icon-pencil"></i>
+                    </a>             
+                    <a ng-click="delPost($index)">
+				        <i class="icon-remove-circle"></i>
+				    </a>
+			    </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

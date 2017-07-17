@@ -1,0 +1,50 @@
+<div ng-controller="TransListCtrl">
+	
+	<div>
+       <a ng-click="newTrans" href="#/new-trans">
+			<button type="button" class="btn btn-success">New Transaction</button>
+	   </a>
+    </div>
+    
+    <h1 class="page-header">Transactions</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="25px">ID</th>
+                <th>SalesID</th>
+                <th>ProductID </th>
+                <th>Quanity </th>
+                <th>Price </th>
+                <th>Subtotal </th>
+                <th>Tax </th>
+                <th>Amount </th>
+                <th>Taxable </th>
+                <th>Modified </th>
+                <th>Created </th>
+                <th width="50px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="e in transactions">
+                <td>{{e.id}}</td>
+                <td>{{e.sale_id}}</td>
+                <td>{{e.product_id}}</td>
+                <td>{{e.quanity}}</td>
+                <td>{{e.price | currency}}</td>
+                <td>{{e.subtotal | currency}}</td>
+                <td>{{e.tax | currency}}</td>
+                <td>{{e.amount | currency}}</td>
+                <td>{{e.taxable}}</td>
+                <td>{{e.modified|date:'short'}}</td>
+                <td>{{e.created|date:'short'}}</td>
+                <td><a ng-click="editTrans($index)"><i
+                            class="icon-pencil"></i>
+                    </a>
+                     
+                    <a ng-click="delPost($index)"><i
+                            class="icon-remove-circle"></i></a></td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

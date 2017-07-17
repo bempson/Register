@@ -1,0 +1,31 @@
+<div ng-controller="CheckOutCtrl">
+    <form  class="form-horizontal">
+    <h1 class="page-header">Sales Number: {{sale.id}}</h1>
+    <fieldset>    
+        <div class="control-group">
+            <label class="control-label" for="amount">Sale Total:</label>
+            <div class="controls">
+                <input id="employee" type="text" class="input-block-level"
+                    required="true" value="{{sale.amount | currency}}"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="cash">Cash</label>
+            <div class="controls">
+                <input id="cash" class="input-block-level"
+                    required="true" ng-model="sale.cash"></input>
+            </div>
+        </div>
+        <div><h1>Change:  {{change | currency}}</h1></div>
+    </fieldset> 
+    <div class="form-actions">			
+        <button class="btn btn-primary"  ng-click="MakeChange()">Make Change</button>
+    </div>
+    </form>
+    <hr>
+    <div>
+       <a ng-click="printSale($index, sale.id)">
+			<button type="button" class="btn btn-success">Print Reciept</button>
+	   </a>
+    </div>
+</div>

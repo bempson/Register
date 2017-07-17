@@ -1,0 +1,28 @@
+ <div ng-controller="printCtrl" id="printSectionId" >
+ 
+    <h4>AngularJS Print html templates</h4>
+    
+    <form novalidate>
+      First Name:
+      <input type="text" ng-model="firstName" class="tb8">
+      <br>
+      <br> Last Name:
+      <input type="text" ng-model="lastName" class="tb8">
+      <br>
+      <br>
+      <button ng-click="Submit()" class="button">Submit</button>
+      <button ng-click="printToCart('printSectionId')" class="button">Print</button>
+    </form>
+    
+ </div>
+
+  <div>
+	<a ng-click="printToCart('printSectionId')">
+		 <button type="button" class="button">Print</button>
+	</a>
+    <br/>
+    <br/><a href="http://www.code-sample.com/2015/07/angularjs-2-forms-validation.html" 
+            target="_blank">More About AngularJS Print...</a>
+            
+             <button ng-click="printToCart('printSectionId')" class="button">Print</button>
+  </div>

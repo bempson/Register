@@ -1,0 +1,114 @@
+<div ng-controller="NewProductCtrl">
+
+    <form  class="form-horizontal">
+
+    <h1 class="page-header">New Product</h1>
+
+    <fieldset>
+	    <div class="control-group">
+            <label class="control-label" for="department_id">Department</label>
+            <div class="controls">
+				<select id="department_id" ng-model="product.department_id" >
+				    <option ng-repeat="dep in departments" value="{{dep.id}}">{{dep.name}}</option>
+				</select>
+            
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="category_id">Category</label>
+            <div class="controls">
+				<select id="category_id" ng-model="product.category_id" >
+				    <option ng-repeat="cat in categories" value="{{cat.id}}">{{cat.name}}</option>
+				</select>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="supplier_id">Supplier</label>
+            <div class="controls">
+				<select id="supplier_id" ng-model="product.supplier_id" >
+				    <option ng-repeat="sup in suppliers" value="{{sup.id}}">{{sup.name}}</option>
+				</select>
+                
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="item_number">Item #</label>
+            <div class="controls">
+                <input id="item_number" type="text" class="input-block-level"
+                       ng-model="product.item_number"></input>
+            </div>
+        </div>    
+        <div class="control-group">
+            <label class="control-label" for="name">Name</label>
+            <div class="controls">
+                <input id="name" type="text" class="input-block-level"
+                       ng-model="product.name"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="description">Description</label>
+            <div class="controls">
+                <input id="description" type="text" class="input-block-level"
+                       ng-model="product.description"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="barcode">Barcode</label>
+            <div class="controls">
+                <input id="barcode" type="text" class="input-block-level"
+                       ng-model="product.barcode"></input>
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <label class="control-label" for="units">Units</label>
+            <div class="controls">
+                <input id="units" type="text" class="input-block-level"
+                       ng-model="product.units"></input>
+            </div>
+        </div> 
+        <div class="control-group">
+            <label class="control-label" for="unit_price">Unit Price</label>
+            <div class="controls">
+                <input id="unit_price" type="text" class="input-block-level"
+                       ng-model="product.unit_price"></input>
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <label class="control-label" for="units_in_stock">Units In Stock</label>
+            <div class="controls">
+                <input id="units_in_stock" type="text" class="input-block-level"
+                       ng-model="product.units_in_stock"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="units_on_order">Units On Order</label>
+            <div class="controls">
+                <input id="units_on_order" type="text" class="input-block-level"
+                       ng-model="product.units_on_order"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="reorder_level">Reorder Level</label>
+            <div class="controls">
+                <input id="reorder_level" type="text" class="input-block-level"
+                       ng-model="product.reorder_level"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="discontinued">Discontinued</label>
+            <div class="controls">
+                <input id="discontinued" type="text" class="input-block-level"
+                       ng-model="product.discontinued"></input>
+            </div>
+        </div>
+
+    </fieldset> 
+
+    <div class="form-actions">			
+        <button class="btn btn-primary" ng-click="saveProduct()">Submit</button>
+    </div>
+
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<div ng-controller="NewSaleCtrl">
+    <form  class="form-horizontal">
+    <h1 class="page-header">New Sale</h1>
+    <fieldset>    
+        <div class="control-group">
+            <label class="control-label" for="employee">Employee</label>
+            <div class="controls">
+				<select id="employee" ng-model="sale.employee_id" >
+				    <option ng-repeat="emp in employees" value="{{emp.id}}">{{emp.name}}</option>
+				</select>
+                <input id="employee" type="text" class="input-block-level"
+                       required="true" ng-model="sale.employee_id"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="customer">Customer</label>
+            <div class="controls">
+				<select id="customer" ng-model="sale.customer_id">
+				    <option ng-repeat="cus in customers" value="{{cus.id}}">{{cus.name}}</option>
+				</select>
+                <input id="customer" class="input-block-level"
+                          ng-model="sale.customer_id" required="true"></input>
+            </div>
+        </div>
+    </fieldset> 
+    <div class="form-actions">			
+        <button class="btn btn-primary" ng-click="saveSale()">Start Sale</button>
+    </div>
+    </form>
+    <div>
+        <button class="btn btn-success" ng-click="newCustomer()">New Customer</button>
+    </div>
+</div>

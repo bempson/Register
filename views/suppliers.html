@@ -1,0 +1,33 @@
+<div ng-controller="SuppliersCtrl">
+    <h1 class="page-header">Suppliers</h1>
+    <div>
+       <a ng-click="newSupplier" href="#/new-supplier">
+			<button type="button" class="btn btn-success">New Supplier</button>
+	   </a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="25px">ID</th>
+                <th>Name</th>
+                <th>Web Page </th>
+                <th width="50px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="e in suppliers">
+                <td>{{e.id}}</td>
+                <td>{{e.name}}</td>
+                <td>{{e.url}}</td>
+                <td><a ng-click="edit($index)">
+					    <i class="icon-pencil"></i>
+                    </a>             
+                    <a ng-click="del($index)">
+				        <i class="icon-remove-circle"></i>
+				    </a>
+			    </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

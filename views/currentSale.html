@@ -1,0 +1,88 @@
+<div ng-controller="editSaleCtrl">
+    <h1 class="page-header">Current Sale</h1>
+    <table class="table">
+        <thead>
+            <tr>
+				<th width="25px">ID</th>
+                <th>EMPLOYEE </th>
+                <th>CUSTOMER </th>
+                <th>ITEMS</th>
+                <th>SUB </th>
+                <th>TAX</th>
+                <th>TOTAL </th>
+                <th width="25px">EDIT</th>
+                <th width="25px">DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{sale.id}}</td>
+                <td>{{sale.employee.first_name}}</td>
+                <td>{{sale.customer.name}}</td>
+                <td>{{sale.items}}</td>
+                <td>{{sale.subtotal | currency}}</td>
+                <td>{{sale.tax | currency}}</td>
+                <td>{{sale.amount | currency}}</td>
+                <td>
+					<a ng-click="editSale($index)">
+						<i class="fa fa-file-text" aria-hidden="true"></i>
+					</a>
+				</td>
+				<td>
+                    <a ng-click="editSale($index)">
+						<i class="fa fa-eraser" aria-hidden="true"></i>
+					</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div>
+        <a ng-click="newItem($index)">
+			<button type="button" class="btn btn-success">Add Item</button>
+	   </a>
+        <a ng-click="checkOut($index)">
+			<button type="button" class="btn btn-success">Check Out</button>
+	   </a>
+    </div>
+    <h4 class="page-header">Items</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="25px">ID</th>
+                <th>SalesID</th>
+                <th>ProductID </th>
+                <th>Quanity </th>
+                <th>Price </th>
+                <th>Subtotal </th>
+                <th>Tax </th>
+                <th>Amount </th>
+                <th>Taxable </th>
+                <th width="25px">EDIT</th>
+                <th width="25px">DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="tran in transactions">
+                <td>{{tran.id}}</td>
+                <td>{{tran.sale_id}}</td>
+                <td>{{tran.product.name}}</td>
+                <td>{{tran.quanity}}</td>
+                <td>{{tran.price | currency}}</td>
+                <td>{{tran.subtotal | currency}}</td>
+                <td>{{tran.tax | currency}}</td>
+                <td>{{tran.amount | currency}}</td>
+                <td>{{tran.taxable}}</td>
+                <td>
+					<a ng-click="editItem($index, tran.id)">
+						<i class="fa fa-file-text" aria-hidden="true"></i>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="deleteItem($index)">
+						<i class="fa fa-eraser" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

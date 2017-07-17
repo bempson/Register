@@ -1,0 +1,37 @@
+<div ng-controller="deleteItemCtrl">
+	<h1 class="page-header">Delete Item</h1>
+	<table class="table">
+        <thead>
+            <tr>
+                <th width="25px">ID</th>
+                <th>SalesID</th>
+                <th>ProductID </th>
+                <th>Quanity </th>
+                <th>Price </th>
+                <th>Subtotal </th>
+                <th>Tax </th>
+                <th>Amount </th>
+                <th>Taxable </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{transaction.id}}</td>
+                <td>{{transaction.sale_id}}</td>
+                <td>{{transaction.product.name}}</td>
+                <td>{{transaction.quanity}}</td>
+                <td>{{transaction.price | currency}}</td>
+                <td>{{transaction.subtotal | currency}}</td>
+                <td>{{transaction.tax | currency}}</td>
+                <td>{{transaction.amount | currency}}</td>
+                <td>{{transaction.taxable}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+        <div>
+        <a ng-click="deleteTransaction()">
+			<button type="button" class="btn btn-delete">Delete</button>
+	   </a>
+	   </div>
+</div>

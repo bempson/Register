@@ -1,0 +1,50 @@
+<div ng-controller="PrintSaleCtrl" id="printSectionId" >
+        <h4>Empson's Craft Supplies <br>
+        & <br>
+        Poppy's Attic</h4>
+    <h5>Sale ID: {{sale.id}}</h5>
+    Associate: {{sale.employee.name}} <br>
+    Customer: {{sale.customer.name}}
+    
+    <hr>
+
+    <table class="table">
+		<thead>
+            <tr>
+				<th width="25">Qty</th>
+                <th>ITEM </th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="tran in transaction">
+				<td width="15">{{tran.quanity}}</td>
+                <td width="110">{{tran.product.name}}</td>
+                <td>{{tran.subtotal | currency}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+    
+    <hr>
+    
+    <table class="table">
+        <tbody>
+            <tr>
+				<td width="100px">Subtotal</td>
+				<td>{{sale.subtotal | currency}}</td>
+            </tr>
+            <tr>
+				<td width="100px">Tax</td>
+                <td>{{sale.tax | currency}}</td>
+            </tr>
+            <tr>
+				<td width="100px">Total</td>
+                <td>{{sale.amount | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a ng-click="printToCart('printSectionId')">
+        <button type="button" class="button">Print</button>
+    </a>
+</div>

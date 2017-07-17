@@ -1,0 +1,47 @@
+<div ng-controller="CustomersCtrl">
+    <h1 class="page-header">Customers</h1>
+    
+     <a ng-click="newDep" href="#/new-dep">
+		<button type="button" class="btn btn-success">New Customer</button>
+	</a>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="25px">ID</th>
+                <th>Name</th>
+                <th>company </th>
+                <th>Title </th>
+                <th>Address </th>
+                <th>City </th>
+                <th>State </th>
+                <th>Zip </th>
+                <th>Tax # </th>
+                <th>Phone </th>
+                <th width="50px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="e in customers">
+                <td>{{e.id}}</td>
+                <td>{{e.name}}</td>
+                <td>{{e.company}}</td>
+                <td>{{e.title}}</td>
+                <td>{{e.address}}</td>
+                <td>{{e.city}}</td>
+                <td>{{e.state}}</td>
+                <td>{{e.postal_code}}</td>
+                <td>{{e.tax_number}}</td>
+                <td>{{e.phone}}</td>
+                <td><a ng-click="editProduct($index)">
+					    <i class="icon-pencil"></i>
+                    </a>             
+                    <a ng-click="delPost($index)">
+				        <i class="icon-remove-circle"></i>
+				    </a>
+			    </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

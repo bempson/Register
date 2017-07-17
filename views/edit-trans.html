@@ -1,0 +1,73 @@
+<div ng-controller="EditTransCtrl">
+
+    <form  class="form-horizontal">
+
+    <h1 class="page-header">Edit </h1>
+
+    <fieldset>    
+
+        <div class="control-group">
+            <label class="control-label" for="sale_id">Sales ID</label>
+            <div class="controls">
+                <input id="sale_id" type="text" class="input-block-level"
+                       ng-model="transaction.sale_id"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="product_id">Product ID</label>
+            <div class="controls">
+                <input id="product_id" type="text" class="input-block-level"
+                       ng-model="transaction.product_id"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="product_id">Quanity</label>
+            <div class="controls">
+                <input id="quanity" type="text" class="input-block-level"
+                       ng-model="transaction.quanity"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="product_id">Price</label>
+            <div class="controls">
+                <input id="price" type="text" class="input-block-level"
+                       ng-model="transaction.price"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="product_id">Subtotal</label>
+            <div class="controls">
+                <input id="subtotal" type="text" class="input-block-level"
+                       ng-model="transaction.subtotal"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="product_id">Tax</label>
+            <div class="controls">
+                <input id="tax" type="text" class="input-block-level"
+                       ng-model="transaction.tax"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="product_id">Amount</label>
+            <div class="controls">
+                <input id="amount" type="text" class="input-block-level"
+                       ng-model="transaction.amount"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="product_id">Taxable</label>
+            <div class="controls">
+                <input id="taxable" type="checkbox" class="input-block-level"
+                       ng-model="transaction.taxable"></input>
+            </div>
+        </div>
+
+    </fieldset> 
+
+    <div class="form-actions">			
+        <button class="btn btn-primary" ng-click="updateTransaction()">Submit</button>
+    </div>
+
+    </form>
+</div>
