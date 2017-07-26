@@ -85,8 +85,7 @@
                 delete $scope.post.created;
                 $scope.post.modified = dateTime;
                 _data = $scope.post;
-                
-                console.log(_data);            
+                            
                 $http
                     .put($rootScope.appUrl + '/api/Posts/edit/' + $scope.post.id + '.json', _data)
                     .success(function(data, status, headers, config) {

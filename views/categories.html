@@ -2,19 +2,20 @@
     <h1 class="page-header">Categories</h1>
     
     <a ng-click="newCategory" href="#/new-category">
-		<button type="button" class="btn btn-success">New Category</button>
+		<button type="button" class="btn btn-primary">New Category</button>
 	</a>
 	
     <hr>
     
-    <table class="table">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th width="25px">ID</th>
                 <th>Name</th>
                 <th>Description </th>
                 <th>Department </th>
-                <th width="50px"></th>
+                <th width="25px">EDIT</th>
+                <th width="25px">DELETE</th>
             </tr>
         </thead>
         <tbody>
@@ -24,10 +25,12 @@
                 <td>{{e.description}}</td>
                 <td>{{e.department.name}}</td>
                 <td><a ng-click="editProduct($index)">
-					    <i class="icon-pencil"></i>
-                    </a>             
+					    <i class="fa fa-file-text" aria-hidden="true"></i>
+                    </a>
+                </td>
+                <td>             
                     <a ng-click="delPost($index)">
-				        <i class="icon-remove-circle"></i>
+						<i class="fa fa-eraser" aria-hidden="true"></i></a>
 				    </a>
 			    </td>
             </tr>

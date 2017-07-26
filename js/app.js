@@ -30,6 +30,7 @@
                 .when('/sales',          {templateUrl: 'views/sales.html'        })
                 .when('/edit-Sale/:id',  {templateUrl: 'views/currentSale.html'  })               
                 .when('/new-item/:id',   {templateUrl: 'views/new-item.html'     })
+                .when('/add-item/:id',   {templateUrl: 'views/add-item.html'     })
                 .when('/delete-item/:id',{templateUrl: 'views/delete-item.html'  })
                 .when('/new-sale',       {templateUrl: 'views/new-sale.html'     })
                 .when('/edit-item/:id',  {templateUrl: 'views/edit-item.html'    })
@@ -44,7 +45,10 @@
                 .when('/customers',      {templateUrl: 'views/customers.html'    })
                 .when('/new-customer',   {templateUrl: 'views/new-customer.html' })
                 
-                .when('/employees',      {templateUrl: 'views/employes'          })
+                .when('/employees',         {templateUrl: 'views/employees.html'    })
+                .when('/edit-employee/:id', {templateUrl: 'views/edit-employee.html'})
+                .when('/new-employee',      {templateUrl: 'views/new-employee.html' })
+                
                 .when('/suppliers',      {templateUrl: 'views/suppliers.html'    })
                 .when('/new-supplier',   {templateUrl: 'views/new-supplier.html' })
                 

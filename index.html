@@ -1,8 +1,5 @@
-<!--
-   index.html
-   
-   Copyright 2017 Brian Empson <bempson@mercury>
-      
+<!--  
+    index.html
 -->
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -46,11 +43,8 @@
                     <li ng-class="activeWhen(path() == '/suppliers')">
                         <a href="#/suppliers">Suppliers</a>
                     </li>
-                     <li ng-class="activeWhen(path() == '/posts')">
-                        <a href="#/posts">Posts</a>
-                    </li>
-                    <li ng-class="activeWhen(path() == '/print')">
-                        <a href="#/print">Print</a>
+                    <li ng-class="activeWhen(path() == '/employees')">
+                        <a href="#/employees">Employees</a>
                     </li>
                 </ul>
             </div>
@@ -94,6 +88,7 @@
         <script type="text/javascript" src="js/controllers/departmentsController.js"></script>
         <script type="text/javascript" src="js/controllers/customersController.js"></script>
         <script type="text/javascript" src="js/controllers/suppliersController.js"></script>
+        <script type="text/javascript" src="js/controllers/employeesController.js"></script>
         
     </body>
 </html>

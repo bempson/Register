@@ -38,6 +38,9 @@
     </table>
     <hr>
     <div>
+		<a ng-click="addItem($index)"> 
+			<button type="button" class="btn btn-primary">Add Manually</button>
+		</a>
         <a ng-click="newItem($index)">
 			<button type="button" class="btn btn-success">Add Item</button>
 	   </a>
@@ -52,7 +55,7 @@
                 <th width="25px">ID</th>
                 <th>SalesID</th>
                 <th>ProductID </th>
-                <th>Quanity </th>
+                <th>Quantity </th>
                 <th>Price </th>
                 <th>Subtotal </th>
                 <th>Tax </th>
@@ -67,7 +70,7 @@
                 <td>{{tran.id}}</td>
                 <td>{{tran.sale_id}}</td>
                 <td>{{tran.product.name}}</td>
-                <td>{{tran.quanity}}</td>
+                <td>{{tran.quantity}}</td>
                 <td>{{tran.price | currency}}</td>
                 <td>{{tran.subtotal | currency}}</td>
                 <td>{{tran.tax | currency}}</td>

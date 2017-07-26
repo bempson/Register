@@ -36,7 +36,7 @@
         
         $scope.category = {};
 
-        $scope.saveCaegory = function() {
+        $scope.saveCategory = function() {
 		    var _data = {};
             _data = $scope.category;
 
