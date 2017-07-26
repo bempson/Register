@@ -3,7 +3,7 @@
     <h1 class="page-header">Products</h1>
     <div>
 		<a ng-click="newProd" href="#/new-prod">
-			<button type="button" class="btn btn-success">New Product</button>
+			<button type="button" class="btn btn-primary">New Product</button>
 	   </a>
 	</div>
 
@@ -27,7 +27,8 @@
                 <th>Department</th>
                 <th>Unit Price </th>
                 <th>In Stock</th>
-                <th width="50px"></th>
+                <th width="25px">EDIT</th>
+                <th width="25px">DELETE</th>
             </tr>
         </thead>
         <tbody>
@@ -42,10 +43,12 @@
                 <td>{{e.unit_price | currency}}</td>
                 <td>{{e.units_in_stock}}</td>
                 <td><a ng-click="editProduct($index)">
-					    <i class="icon-pencil"></i>
-                    </a>             
+					    <i class="fa fa-file-text" aria-hidden="true"></i>
+                    </a>
+                </td>
+                <td>             
                     <a ng-click="delPost($index)">
-				        <i class="icon-remove-circle"></i>
+						<i class="fa fa-eraser" aria-hidden="true"></i>
 				    </a>
 			    </td>
             </tr>

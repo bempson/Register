@@ -2,16 +2,19 @@
     <h1 class="page-header">Suppliers</h1>
     <div>
        <a ng-click="newSupplier" href="#/new-supplier">
-			<button type="button" class="btn btn-success">New Supplier</button>
+			<button type="button" class="btn btn-primary">New Supplier</button>
 	   </a>
     </div>
-    <table class="table">
+    <hr>
+    
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th width="25px">ID</th>
                 <th>Name</th>
                 <th>Web Page </th>
-                <th width="50px"></th>
+                <th width="25px">EDIT</th>
+                <th width="25px">DELETE</th>
             </tr>
         </thead>
         <tbody>
@@ -20,10 +23,12 @@
                 <td>{{e.name}}</td>
                 <td>{{e.url}}</td>
                 <td><a ng-click="edit($index)">
-					    <i class="icon-pencil"></i>
-                    </a>             
+					    <i class="fa fa-file-text" aria-hidden="true"></i>
+                    </a>
+                </td>
+                <td>             
                     <a ng-click="del($index)">
-				        <i class="icon-remove-circle"></i>
+				        <i class="fa fa-eraser" aria-hidden="true"></i></a>
 				    </a>
 			    </td>
             </tr>
