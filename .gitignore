@@ -1,0 +1,4 @@
+api/config/app.php
+api/vendor/*
+api/logs/*
+api/tmp/*
