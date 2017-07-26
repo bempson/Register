@@ -204,8 +204,13 @@
             console.log(' ... You clicked Check Out ... ');
             $location.path('/check-out/' + $routeParams['id']);
         }
+        
+        $scope.addItem = function(index) {
+            console.log(' ... Clicked newItem ... ');
+            $location.path('/add-item/' + $routeParams['id']);
+        }
 
-        /*** Test Dekete Item ***/
+        /*** Test Delete Item ***/
         $scope.deleteItem = function(index) {
 			console.log(' ... Delete Item ... ');
 			$location.path('/delete-item/' + $scope.transactions[index].id);
@@ -424,10 +429,10 @@
 							
 		    $http.put($rootScope.appUrl + '/api/Sales/edit/' + $scope.sale.id + '.json', _sale)
 		        .success(function(data, status, headers, config) { 
-					console.log(' ... Sale Updated ... ');
+			    console.log(' ... Sale Updated ... ');
 					
-					console.log(' ... Product Update ... ');
-					var _data = {};
+			    console.log(' ... Product Update ... ');
+			    var _data = {};
 		            $scope.product.units_in_stock = $scope.product.units_in_stock + $scope.transaction.quanity;
 		            $scope.product.modified = dateTime;
 		            delete $scope.product.created;
@@ -476,5 +481,118 @@
         //}
     });
 /*************************************************************/
-   
+    /*** 
+     * Manually Add Item 
+     ***/
+    as.controller('AddItemCtrl', function($scope, $rootScope, $http, $routeParams, $location) {
+		
+		console.log('... Adding A New Item ... ');
+		
+		$scope.price = 0;
+        tax = .06;
+        $scope.transaction = {};
+        $scope.product = {};
+                    
+        $scope.transaction.sale_id = $routeParams['id'];
+        $scope.transaction.product_id = 0;
+
+        /*** Get Categories ***/
+        var getcat = function() {
+            $http.get($rootScope.appUrl + '/api/Categories.json')
+                    .success(function(data, status, headers, config) {
+                        $scope.categories = data.categories;                      
+                    });
+        }
+        getcat();
+
+        /*** Get Departments ***/
+        var getdep = function() {
+            $http.get($rootScope.appUrl + '/api/Departments.json')
+                    .success(function(data, status, headers, config) {
+                        $scope.departments = data.departments;                      
+                    });
+        }
+        getdep();
+                
+        /*** Get Sales ***/
+        $http.get($rootScope.appUrl + '/api/Sales/edit/' + $routeParams['id'] + '.json')
+			        .success(function(data, status, headers, config) {
+						console.log(' ... Got Sale ... ');
+                         $scope.sales = data.sale;
+		});
+		
+        /***  Update Quanity  ****/
+        $scope.UpdateQuanity = function() {
+			
+			console.log('  ....Update Quanity....  ');
+			
+			$scope.transaction.subtotal = $scope.transaction.price * $scope.transaction.quanity;
+			$scope.transaction.tax = 0.00;
+			$scope.transaction.amount =  $scope.transaction.subtotal + $scope.transaction.tax;
+			
+			console.log('  ....Update Complete....  ');
+		}	
+		
+		$scope.UpdateTax = function() {
+			if ($scope.transaction.taxable == true) {
+				$scope.transaction.tax = tax * $scope.transaction.subtotal;
+				$scope.transaction.amount =  $scope.transaction.subtotal + $scope.transaction.tax;
+			} else {		
+			    $scope.transaction.amount =  $scope.transaction.amount - $scope.transaction.tax;
+				$scope.transaction.tax = 0.00;
+				$scope.transaction.taxable = false;
+			}
+		}
+
+		$scope.updateTransaction = function() {
+            console.log('call updateTransaction');
+
+		    $scope.product.description = $scope.product.name;
+		    $scope.product.unit_price = $scope.transaction.price;
+            var _prod = $scope.product;
+
+            $http.post($rootScope.appUrl + '/api/Products/add/add.json' , _prod)
+	            .success(
+	                function(data, status, headers, config) {
+						$scope.product = data.product;
+						
+						if ($scope.transaction.taxable == true) {
+			                $scope.transaction.taxable = '1';
+			            } else {
+				            $scope.transaction.taxable = '0';
+			            }
+			            
+			            $scope.transaction.product_id = $scope.product.id;
+			            var _data = $scope.transaction;
+			            
+			            $http.post($rootScope.appUrl + '/api/Transactions/add/add.json', _data)
+                             .success(function(data, status, headers, config) {
+			                     var _sale = {};
+						
+					             $scope.transaction = data.transaction;
+                         
+                                 $scope.sales.items    = $scope.sales.items + $scope.transaction.quanity;
+                                 $scope.sales.subtotal = $scope.sales.subtotal + $scope.transaction.subtotal;
+                                 $scope.sales.tax      = $scope.sales.tax + $scope.transaction.tax;
+                                 $scope.sales.amount   = $scope.sales.amount + $scope.transaction.amount;
+                    
+                                 delete $scope.sales.created;
+					             delete $scope.sales.modified;
+                        
+					             _sale = $scope.sales;
+					             	
+                                 $http.put($rootScope.appUrl + '/api/Sales/edit/' + $routeParams['id'] + '.json', _sale)
+                                      .success(function(data, status, headers, config) {
+							              $location.path('/edit-Sale/' + $routeParams['id']);
+						              })
+						              .error( function(data, status, headers, config) {} );
+		                     })
+	                        .error( function(data, status, headers, config) {} );
+    		    })
+                .error(function(data, status, headers, config) { "Failed!!!  "});
+            }
+		/*  */
+		
+	});
+	
 }());

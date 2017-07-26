@@ -27,10 +27,9 @@
             $location.url('/');
         };
 
-        $rootScope.appUrl = "http://mercury/crafts-af";
+        $rootScope.appUrl = "http://register";
         //$rootScope.appUrl = "http://10.186.38.251/crafts-af";
-        
-        
+
     });
 
     /*********************************************   
