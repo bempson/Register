@@ -1,2 +1,2 @@
 # Register
-Accounting app built with cakephp and angular
+Accounting POS app built with cakephp and angular
