@@ -74,7 +74,6 @@
         $scope.saveEmployee = function() {
 		    var _data = {};
 		    
-		    
             delete $scope.employee.orders;
             delete $scope.employee.sales;
             delete $scope.employee.users;
