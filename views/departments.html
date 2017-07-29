@@ -1,7 +1,7 @@
 <div ng-controller="DepartmentsCtrl">
     <h1 class="page-header">Departments</h1>
     
-     <a ng-click="newDep" href="#/new-dep">
+     <a ng-click="newDepartment" href="#/new-department">
 		<button type="button" class="btn btn-primary">New Department</button>
 	</a>
     <hr>
@@ -20,12 +20,12 @@
                 <td>{{e.id}}</td>
                 <td>{{e.name}}</td>
                 <td>{{e.description}}</td>
-                <td><a ng-click="editProduct($index)">
+                <td><a ng-click="editDepartment($index)">
 					    <i class="fa fa-file-text" aria-hidden="true"></i>
                     </a>
                 </td>
                 <td>             
-                    <a ng-click="delPost($index)">
+                    <a ng-click="delDepartment($index)">
 						<i class="fa fa-eraser" aria-hidden="true"></i></a>
 				    </a>
 			    </td>

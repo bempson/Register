@@ -1,8 +1,8 @@
-<div ng-controller="NewCustomerCtrl">
+<div ng-controller="EditCustomerCtrl">
 	
     <form  class="form-horizontal">
     
-    <h1 class="page-header">New Customer</h1>
+    <h1 class="page-header">Edit Customer - {{customer.id}}</h1>
     
     <fieldset>
 		<div class="control-group">
@@ -71,7 +71,7 @@
     </fieldset> 
     
     <div class="form-actions">			
-        <button class="btn btn-primary" ng-click="saveCustomer()">Submit</button>
+        <button class="btn btn-primary" ng-click="updateCustomer()">Submit</button>
     </div>
     
     </form>

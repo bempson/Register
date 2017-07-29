@@ -81,7 +81,7 @@ class SuppliersController extends AppController
             if ($this->Suppliers->save($supplier)) {
                 $this->Flash->success(__('The supplier has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                //return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The supplier could not be saved. Please, try again.'));
         }
@@ -106,6 +106,6 @@ class SuppliersController extends AppController
             $this->Flash->error(__('The supplier could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        //return $this->redirect(['action' => 'index']);
     }
 }
