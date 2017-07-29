@@ -1,5 +1,10 @@
 (function() {
 
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date+' '+time;
+    
     var as = angular.module('crafts.controllers');
     
     /*** Employee Controller ***/
@@ -66,6 +71,13 @@
             $http.get($rootScope.appUrl + '/api/Employees/view/' + $routeParams['id'] + '.json')
                     .success(function(data, status, headers, config) {
                         $scope.employee = data.employee;
+                        
+                        var bday = $scope.employee.birth_date.split("T");
+                        $scope.employee.birth_date = bday[0];
+                        
+                        var hday = $scope.employee.hire_date.split("T");
+                        $scope.employee.hire_date = hday[0];
+                        
                     });
         }
 
@@ -74,11 +86,11 @@
         $scope.saveEmployee = function() {
 		    var _data = {};
 		    
+		    $scope.employee.modified = dateTime;
+            
             delete $scope.employee.orders;
             delete $scope.employee.sales;
             delete $scope.employee.users;
-            
-            delete $scope.employee.modified;
             delete $scope.employee.created;
             
             _data = $scope.employee;

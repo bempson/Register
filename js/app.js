@@ -31,7 +31,7 @@
                 .when('/edit-Sale/:id',  {templateUrl: 'views/currentSale.html'  })               
                 .when('/new-item/:id',   {templateUrl: 'views/new-item.html'     })
                 .when('/add-item/:id',   {templateUrl: 'views/add-item.html'     })
-                .when('/delete-item/:id',{templateUrl: 'views/delete-item.html'  })
+                .when('/delete-item/:id', {templateUrl: 'views/delete-item.html'  })
                 .when('/new-sale',       {templateUrl: 'views/new-sale.html'     })
                 .when('/edit-item/:id',  {templateUrl: 'views/edit-item.html'    })
                 .when('/check-out/:id',  {templateUrl: 'views/checkout.html'     })
@@ -39,18 +39,22 @@
                 
                 .when('/categories',     {templateUrl: 'views/categories.html'   })
                 .when('/new-category',   {templateUrl: 'views/new-category.html' })
+                .when('/edit-category/:id',   {templateUrl: 'views/edit-category.html' })
 
                 .when('/departments',    {templateUrl: 'views/departments.html'  })
+                .when('/new-department', {templateUrl: 'views/new-department.html'  })
                 
                 .when('/customers',      {templateUrl: 'views/customers.html'    })
                 .when('/new-customer',   {templateUrl: 'views/new-customer.html' })
+                .when('/edit-customer/:id',   {templateUrl: 'views/edit-customer.html' })
                 
                 .when('/employees',         {templateUrl: 'views/employees.html'    })
                 .when('/edit-employee/:id', {templateUrl: 'views/edit-employee.html'})
                 .when('/new-employee',      {templateUrl: 'views/new-employee.html' })
                 
-                .when('/suppliers',      {templateUrl: 'views/suppliers.html'    })
-                .when('/new-supplier',   {templateUrl: 'views/new-supplier.html' })
+                .when('/suppliers',         {templateUrl: 'views/suppliers.html'    })
+                .when('/new-supplier',      {templateUrl: 'views/new-supplier.html' })
+                .when('/edit-supplier/:id', {templateUrl: 'views/edit-supplier.html' })
                 
                 .when('/posts',          {templateUrl: 'views/posts.html'        })
 	            .when('/new-post',       {templateUrl: 'views/new-post.html'     })
@@ -121,7 +125,7 @@
                                 
                             //success -> don't intercept			
                             function(response) {
-                                console.log('dont intercept...');
+                                console.log('Success...');
                                 return response;
                             },
                                 
@@ -138,6 +142,18 @@
                                             
                                         $rootScope.requests401.push(req);
                                         $rootScope.$broadcast('event:loginRequired');
+                                        return deferred.promise;
+                                } else {
+									console.log('catching http status:404 - Not Found!!!');
+                                    var deferred = $q.defer(),
+                                        req = {
+                                             config: response.config,
+                                             deferred: deferred
+                                        };
+                                            
+                                        //$rootScope.requests404.push(req);
+                                        $rootScope.$broadcast('event:Not Found!!!');
+                                        
                                         return deferred.promise;
                                 }
                                           return $q.reject(response);

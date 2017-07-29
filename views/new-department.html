@@ -1,0 +1,30 @@
+<div ng-controller="NewDepartmentCtrl">
+	
+    <form  class="form-horizontal">
+    
+    <h1 class="page-header">New Department</h1>
+    
+    <fieldset>   
+        <div class="control-group">
+            <label class="control-label" for="name">Name</label>
+            <div class="controls">
+                <input id="name" type="text" class="input-block-level"
+                       required="true" ng-model="department.name"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="description">Description</label>
+            <div class="controls">
+                <input id="description" type="text" class="input-block-level"
+                       required="true" ng-model="department.description"></input>
+            </div>
+        </div>
+    </fieldset> 
+    
+    <div class="form-actions">			
+        <button class="btn btn-primary" ng-click="saveDepartment()">Submit</button>
+    </div>
+    
+    </form>
+
+</div>
