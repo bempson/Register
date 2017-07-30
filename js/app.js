@@ -37,16 +37,16 @@
                 .when('/check-out/:id',  {templateUrl: 'views/checkout.html'     })
                 .when('/print-sale/:id', {templateUrl: 'views/printSale.html'    })
                 
-                .when('/categories',     {templateUrl: 'views/categories.html'   })
-                .when('/new-category',   {templateUrl: 'views/new-category.html' })
+                .when('/categories',          {templateUrl: 'views/categories.html'      })
+                .when('/new-category',        {templateUrl: 'views/new-category.html'    })
                 .when('/edit-category/:id',   {templateUrl: 'views/edit-category.html'   })
 
                 .when('/departments',         {templateUrl: 'views/departments.html'     })
                 .when('/new-department',      {templateUrl: 'views/new-department.html'  })
                 .when('/edit-department/:id', {templateUrl: 'views/edit-department.html' })
                 
-                .when('/customers',      {templateUrl: 'views/customers.html'    })
-                .when('/new-customer',   {templateUrl: 'views/new-customer.html' })
+                .when('/customers',           {templateUrl: 'views/customers.html'       })
+                .when('/new-customer',        {templateUrl: 'views/new-customer.html'    })
                 .when('/edit-customer/:id',   {templateUrl: 'views/edit-customer.html'   })
                 
                 .when('/employees',         {templateUrl: 'views/employees.html'    })
@@ -126,7 +126,7 @@
                                 
                             //success -> don't intercept			
                             function(response) {
-                                console.log('Success...');
+                                console.log('Success -> Do Not Intercept...');
                                 return response;
                             },
                                 
