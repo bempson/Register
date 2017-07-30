@@ -46,16 +46,7 @@
     });
 
     as.controller('NewCategoryCtrl', function($scope, $rootScope, $http, $location) {
-	    
-	    var getdep = function() {
-			console.log('call New Category...');
-            $http.get($rootScope.appUrl + '/api/Departments.json')
-                    .success(function(data, status, headers, config) {
-                        $scope.departments = data.departments;                      
-                    });
-        }
-        getdep();
-        
+
         $scope.category = {};
 
         $scope.saveCategory = function() {
@@ -79,16 +70,7 @@
 	});
 	    
 	as.controller('EditCategoryCtrl', function($scope, $rootScope, $http, $routeParams, $location) {
-
-        var getdep = function() {
-			console.log('Grab Departments...');
-            $http.get($rootScope.appUrl + '/api/Departments.json')
-                    .success(function(data, status, headers, config) {
-                        $scope.departments = data.departments;                      
-                    });
-        }
-        getdep();
-        
+    
         var load = function() {
             console.log('Grab Category '+ $routeParams['id'] +' ...');
             $http.get($rootScope.appUrl + '/api/Categories/view/' + $routeParams['id'] + '.json')
@@ -106,8 +88,7 @@
             console.log('Call Update Category...');
         
             var _data = {};
-                delete $scope.category.department.modified;
-                delete $scope.category.department.created;
+            
                 delete $scope.category.created;
                 $scope.category.modified = dateTime;
                 _data = $scope.category;

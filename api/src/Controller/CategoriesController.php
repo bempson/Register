@@ -19,11 +19,7 @@ class CategoriesController extends AppController
      * @return \Cake\Http\Response|null
      */
     public function index()
-    {
-		$this->paginate = [
-            'contain' => ['Departments']
-        ];
-       
+    {  
         $categories = $this->paginate($this->Categories);
 
         $this->set(compact('categories'));
@@ -39,9 +35,7 @@ class CategoriesController extends AppController
      */
     public function view($id = null)
     {
-        $category = $this->Categories->get($id, [
-            'contain' => ['Departments']
-        ]);
+        $category = $this->Categories->get($id);
 
         $this->set('category', $category);
         $this->set('_serialize', ['category']);
@@ -58,9 +52,7 @@ class CategoriesController extends AppController
         if ($this->request->is('post')) {
             $category = $this->Categories->patchEntity($category, $this->request->getData());
             if ($this->Categories->save($category)) {
-                $this->Flash->success(__('The category has been saved.'));
-                //return $this->redirect(['action' => 'index']);
-                
+                $this->Flash->success(__('The category has been saved.'));              
             }
             $this->Flash->error(__('The category could not be saved. Please, try again.'));
         }
@@ -84,8 +76,6 @@ class CategoriesController extends AppController
             $category = $this->Categories->patchEntity($category, $this->request->getData());
             if ($this->Categories->save($category)) {
                 $this->Flash->success(__('The category has been saved.'));
-                //return $this->redirect(['action' => 'index']);
-                
             }
             $this->Flash->error(__('The category could not be saved. Please, try again.'));
         }
@@ -109,7 +99,5 @@ class CategoriesController extends AppController
         } else {
             $this->Flash->error(__('The category could not be deleted. Please, try again.'));
         }
-
-        //return $this->redirect(['action' => 'index']);
     }
 }
