@@ -64,7 +64,7 @@
             <label class="control-label" for="units">Units</label>
             <div class="controls">
                 <input id="units" type="text" class="input-block-level"
-                       ng-model="product.units"></input>
+                       ng-model="product.units" ng-change="UpdateUnits()"></input>
             </div>
         </div> 
         <div class="control-group">
@@ -79,7 +79,7 @@
             <label class="control-label" for="units_in_stock">Units In Stock</label>
             <div class="controls">
                 <input id="units_in_stock" type="text" class="input-block-level"
-                       ng-model="product.units_in_stock"></input>
+                       value="{{product.units_in_stock}}"></input>
             </div>
         </div>
         <div class="control-group">

@@ -44,7 +44,9 @@
 
     /***  Check Out ***/
     as.controller('CheckOutCtrl', function($scope, $rootScope, $http, $routeParams, $location) {
+		
 		$scope.change = 0.00;
+		$scope.payment = ["Cash", "Check", "Change"];
 		
 		var sale = function() {
             console.log(' ... Current Sale ... ');
@@ -270,12 +272,12 @@
 		}
 
         /***  Update Quanity  ****/
-        $scope.UpdateQuanity = function() {
+        $scope.UpdateQuantity = function() {
 			
-			console.log('  ....Update Quanity....  ');
+			console.log('  ....Update Quantity....  ');
 			
 			$scope.transaction.price = $scope.product.unit_price;
-			$scope.transaction.subtotal = $scope.product.unit_price * $scope.transaction.quanity;
+			$scope.transaction.subtotal = $scope.product.unit_price * $scope.transaction.quantity;
 			$scope.transaction.tax = 0.00;
 			$scope.transaction.amount =  $scope.transaction.subtotal + $scope.transaction.tax;
 			
@@ -314,7 +316,7 @@
 						
 					$scope.transaction = data.transaction;
 					$scope.product.id = $scope.transaction.product_id;
-					$scope.product.units_in_stock = $scope.product.units_in_stock - $scope.transaction.quanity;
+					$scope.product.units_in_stock = $scope.product.units_in_stock - $scope.transaction.quantity;
 			
 					delete $scope.product.created;
 					delete $scope.product.modified;
@@ -325,7 +327,7 @@
                          .success(function(data, status, headers, config) {})
                          .error(function(data, status, headers, config) {});
                          
-                    $scope.sales.items    = $scope.sales.items + $scope.transaction.quanity;
+                    $scope.sales.items    = $scope.sales.items + $scope.transaction.quantity;
                     $scope.sales.subtotal = $scope.sales.subtotal + $scope.transaction.subtotal;
                     $scope.sales.tax      = $scope.sales.tax + $scope.transaction.tax;
                     $scope.sales.amount   = $scope.sales.amount + $scope.transaction.amount;
@@ -417,7 +419,7 @@
             console.log('call deleteTransaction');
             
             console.log(' ... Sale Update ... ');
-            $scope.sale.items = parseInt($scope.sale.items) - parseInt($scope.transaction.quanity);
+            $scope.sale.items = parseInt($scope.sale.items) - parseInt($scope.transaction.quantity);
 		    $scope.sale.subtotal = $scope.sale.subtotal - $scope.transaction.subtotal;
 		    $scope.sale.tax = $scope.sale.tax - $scope.transaction.tax;
 		    $scope.sale.amount = $scope.sale.amount - $scope.transaction.amount;
@@ -433,7 +435,7 @@
 					
 			    console.log(' ... Product Update ... ');
 			    var _data = {};
-		            $scope.product.units_in_stock = $scope.product.units_in_stock + $scope.transaction.quanity;
+		            $scope.product.units_in_stock = $scope.product.units_in_stock + $scope.transaction.quantity;
 		            $scope.product.modified = dateTime;
 		            delete $scope.product.created;
 		    
@@ -522,11 +524,11 @@
 		});
 		
         /***  Update Quanity  ****/
-        $scope.UpdateQuanity = function() {
+        $scope.UpdateQuantity = function() {
 			
-			console.log('  ....Update Quanity....  ');
+			console.log('  ....Update Quantity....  ');
 			
-			$scope.transaction.subtotal = $scope.transaction.price * $scope.transaction.quanity;
+			$scope.transaction.subtotal = $scope.transaction.price * $scope.transaction.quantity;
 			$scope.transaction.tax = 0.00;
 			$scope.transaction.amount =  $scope.transaction.subtotal + $scope.transaction.tax;
 			
@@ -571,7 +573,7 @@
 						
 					             $scope.transaction = data.transaction;
                          
-                                 $scope.sales.items    = $scope.sales.items + $scope.transaction.quanity;
+                                 $scope.sales.items    = $scope.sales.items + $scope.transaction.quantity;
                                  $scope.sales.subtotal = $scope.sales.subtotal + $scope.transaction.subtotal;
                                  $scope.sales.tax      = $scope.sales.tax + $scope.transaction.tax;
                                  $scope.sales.amount   = $scope.sales.amount + $scope.transaction.amount;
