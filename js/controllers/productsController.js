@@ -59,8 +59,12 @@
         }
         getdep();
         
-        
         $scope.product = {};
+        $scope.product.units_in_stock = 0;
+        
+        $scope.UpdateUnits = function() {
+		    $scope.product.units_in_stock = parseInt($scope.product.units_in_stock) + parseInt($scope.product.units);
+		}
 
         $scope.saveProduct = function() {
             console.log(' ... call save Product ... ');
