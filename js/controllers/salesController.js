@@ -45,8 +45,10 @@
     /***  Check Out ***/
     as.controller('CheckOutCtrl', function($scope, $rootScope, $http, $routeParams, $location) {
 		
+		$scope.sale = {};
+		
 		$scope.change = 0.00;
-		$scope.payment = ["Cash", "Check", "Change"];
+		$scope.payment = ["Cash", "Check", "Charge"];
 		
 		var sale = function() {
             console.log(' ... Current Sale ... ');
@@ -61,13 +63,22 @@
         $scope.MakeChange = function() {
 			console.log(' ....Making Change....  ' );
             $scope.change = $scope.sale.cash - $scope.sale.amount;
+            $scope.sale.change = $scope.change;
+            $scope.sale.status = "Paid";
+            
+            var _data = $scope.sale;
+            $http.put($rootScope.appUrl + '/api/Sales/edit/' + $routeParams['id'] + '.json', _data);
+            
+            console.log($scope);
+            
 		}
 		
 		$scope.printSale = function(index) {
 			console.log(' ... Print Sale ... ');
 			$location.path('/print-sale/' + $routeParams['id']);
 		}
-       
+        
+        
 	});
 	
 	/***  Print Reciept ***/
@@ -247,7 +258,7 @@
         $scope.transaction.sale_id = $routeParams['id'];
         
         /*** Get Sales ***/
-        $http.get($rootScope.appUrl + '/api/Sales/edit/' + $routeParams['id'] + '.json')
+        $http.get($rootScope.appUrl + '/api/Sales/view/' + $routeParams['id'] + '.json')
 			        .success(function(data, status, headers, config) {
 						console.log(' ... Got Sale ... ');
                          $scope.sales = data.sale;
