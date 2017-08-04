@@ -49,16 +49,31 @@
 		
 		$scope.change = 0.00;
 		$scope.payment = ["Cash", "Check", "Charge"];
+		$scope.sale.cash = 0.00;
 		
 		var sale = function() {
             console.log(' ... Current Sale ... ');
             $http.get($rootScope.appUrl + '/api/Sales/getOne/' + $routeParams['id'] + '.json')
                     .success(function(data, status, headers, config) {
                         $scope.sale = data.sale;
+                        $scope.sale.cash = 0.00;
+                        $scope.sale.type = 'Blank';
                     });
         }
 
         sale();
+
+        $scope.UpdatePayment = function() {
+			console.log(' UPDATE PAYMENT ');
+			
+            if ( $scope.sale.type == "Cash") {
+				console.log(' CASH SELECTED!! ');
+			    $scope.sale.cash = 0.00;
+			} else {
+				$scope.sale.cash = $scope.sale.amount;
+			}
+			
+        }
         
         $scope.MakeChange = function() {
 			console.log(' ....Making Change....  ' );
@@ -66,12 +81,17 @@
             $scope.sale.change = $scope.change;
             $scope.sale.status = "Paid";
             
+            delete $scope.sale.customer;
+            delete $scope.sale.employee;
+            delete $scope.sale.created;
+            
+            $scope.sale.modified = dateTime;
+            
             var _data = $scope.sale;
-            $http.put($rootScope.appUrl + '/api/Sales/edit/' + $routeParams['id'] + '.json', _data);
+            $http.put($rootScope.appUrl + '/api/Sales/edit/' + $routeParams['id'] + '.json', _data)
+                 .success(function(data, status, headers, config) {});
             
-            console.log($scope);
-            
-		}
+        }
 		
 		$scope.printSale = function(index) {
 			console.log(' ... Print Sale ... ');
