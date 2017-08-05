@@ -93,7 +93,6 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Yarn','Yarn',NULL,'2017-05-30 20:37:20','2017-05-30 20:37:20');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +126,6 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'Jane Doe','','','','','','','','','2017-05-30 20:29:57','2017-05-30 20:29:57');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +195,6 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1,'Brian Empson','Brian','Empson','brian.empson@gmail.com','Owner','1967-05-04','2017-06-01','236 South Dry Run Road','Coudersport','Pennsylvania','16915','','814-558-8713',NULL,'These are the notes for this user!','2017-05-30 18:00:04','2017-05-30 16:59:29'),(2,'Rhonda Empson',NULL,NULL,'rhonda.empson@gmail.com','Owner','1966-08-26','2017-06-01','236 South Dry Run Road','Coudersport','Pennsylvania','16915','8142036710','8142036710',NULL,'Rhonda is the other owner!','2017-05-30 20:22:02','2017-05-30 20:22:02');
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,7 +267,6 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Something','This something','1000001',1,NULL,1,1.00,9,NULL,'5',NULL,'','2017-06-01 19:00:41','2017-05-31 19:36:10');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,7 +293,6 @@ CREATE TABLE `sales` (
 
 LOCK TABLES `sales` WRITE;
 /*!40000 ALTER TABLE `sales` DISABLE KEYS */;
-INSERT INTO `sales` VALUES (1,1,'1','2017-05-30 20:32:48','2017-05-30 20:32:48');
 /*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,7 +380,6 @@ CREATE TABLE `transactions` (
 
 LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
-INSERT INTO `transactions` VALUES (1,1,NULL,1,NULL,1.05,0.00,0.00,0.00,NULL,'2017-06-02 02:56:03','2017-05-30 20:34:10');
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -414,7 +408,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'bempson','mypassword',1,'admin','2017-05-30 17:00:19','2017-05-30 17:00:19'),(2,'rempson','herpassword',2,'admin','2017-05-30 20:22:36','2017-05-30 20:22:36');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
