@@ -92,7 +92,6 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (7,'Yarn','Green Yarn','2017-07-30 18:06:07','2017-07-30 01:18:40'),(9,'Home Decor','Home Decor and other things','2017-07-30 23:01:15','2017-07-30 23:01:15');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +125,6 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (3,'Customer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-07-24 23:44:35','2017-07-24 23:44:35'),(5,'Barb White',NULL,NULL,'183 South Dry Run Rd','Coudersport','Pa',NULL,NULL,'814-274-9617','2017-07-29 18:58:14','2017-07-29 18:58:14');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +151,6 @@ CREATE TABLE `departments` (
 
 LOCK TABLES `departments` WRITE;
 /*!40000 ALTER TABLE `departments` DISABLE KEYS */;
-INSERT INTO `departments` VALUES (9,'Supplies','Craft Supplies and Stuff','2017-07-29 21:12:27','2017-07-29 16:42:47'),(10,'Crafts','Home made crafts','2017-07-29 16:43:49','2017-07-29 16:43:49'),(12,'Home Decor','Home Decor and other things','2017-07-30 01:16:46','2017-07-30 01:16:46'),(13,'Supplies','Craft Supplies and Stuff','2017-07-30 22:06:37','2017-07-30 22:06:37');
 /*!40000 ALTER TABLE `departments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +220,6 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1,'Brian Empson','Brian','Empson','brian.empson@gmail.com','Owner','1967-05-04','2017-07-01','236 South Dry Run Rd.','Coudersport','Pa','16915','814-558-8713','814-558-8713',NULL,'Owner','2017-07-29 15:15:44','2017-07-23 21:59:12'),(2,'Rhonda Empson','Rhonda','Empson','rhonda.empson@gmail.com','Owner','1966-08-26','2017-07-01','236 South Dry Run Rd.','Coudersport','Pa','16915','814-203-6710','814-203-6710',NULL,'Owner','2017-07-29 15:24:19','2017-07-29 15:24:19');
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,7 +319,6 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (14,'Green Yarn','Make Believe Green Yarn','0810',7,1,9,0,1.05,-1,0,0,0,NULL,'2017-08-01 23:31:33','2017-07-30 23:08:49'),(15,'Oak Chair','Oak Chair','0820',9,0,10,0,20.00,0,0,0,0,NULL,'2017-07-31 00:00:48','2017-07-31 00:00:48'),(16,'Oak Table','Oak Table','0830',9,2,9,0,100.00,2,0,0,0,NULL,'2017-07-30 20:16:38','2017-07-31 00:18:55'),(17,'End Stand','End Stand','0840',9,4,9,0,25.00,3,0,0,0,NULL,'2017-07-30 20:16:38','2017-07-31 00:22:38'),(18,'Something','Something','0850',7,4,9,2,2.00,2,0,0,0,NULL,'2017-07-31 11:11:41','2017-07-31 11:11:41');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,7 +351,6 @@ CREATE TABLE `sales` (
 
 LOCK TABLES `sales` WRITE;
 /*!40000 ALTER TABLE `sales` DISABLE KEYS */;
-INSERT INTO `sales` VALUES (5,1,3,0,21.05,1.26,22.31,NULL,NULL,'2017-07-30 20:16:38','2017-07-30 23:10:03'),(6,NULL,NULL,1,1.05,0.06,1.11,NULL,NULL,'2017-08-01 23:31:33','2017-08-01 23:17:34');
 /*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,7 +405,6 @@ CREATE TABLE `suppliers` (
 
 LOCK TABLES `suppliers` WRITE;
 /*!40000 ALTER TABLE `suppliers` DISABLE KEYS */;
-INSERT INTO `suppliers` VALUES (1,'First Supplier','http://www.firstsupplies.com','2017-07-29 14:17:07','2017-07-29 17:23:11'),(2,'Second Supplies','http://www.SecondSupplies.com','2017-07-29 17:24:33','2017-07-29 17:24:33'),(4,'Third Supplier','http://www.thirdsupplier.com','2017-07-29 18:21:46','2017-07-29 18:21:46');
 /*!40000 ALTER TABLE `suppliers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -445,7 +438,6 @@ CREATE TABLE `transactions` (
 
 LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
-INSERT INTO `transactions` VALUES (11,5,NULL,14,1,1.05,1.05,0.06,1.11,1,'2017-07-30 23:38:36','2017-07-30 23:38:36'),(12,5,NULL,15,1,20.00,20.00,1.20,21.20,1,'2017-07-31 00:00:48','2017-07-31 00:00:48'),(14,6,NULL,14,1,1.05,1.05,0.06,1.11,1,'2017-08-01 23:31:33','2017-08-01 23:31:33');
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
