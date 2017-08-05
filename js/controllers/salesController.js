@@ -14,7 +14,7 @@
         var load = function() {
 
             console.log('... Sales Controller ... ');
-            $http.get($rootScope.appUrl + '/api/Sales.json')
+            $http.get($rootScope.appUrl + '/api/Sales/paid.json')
 
                     .success(function(data, status, headers, config) {
                         console.log(' ... We have all Sales Records ... ');
@@ -121,16 +121,6 @@
 		}
 		
 		transactions();
-       /* 
-        console.log(' ... Set Status Paid ... ');
-        var updatestatus = function() {
-			
-			$http.put($rootScope.appUrl + '/api/Sales/edit/' + $routeParams['id'] + '.json', _sale)
-			    .success(function() {
-					})
-		}
-		updatestatus();
-        */
 
         $scope.printToCart = function(printSectionId) {
 
@@ -243,23 +233,47 @@
             $location.path('/add-item/' + $routeParams['id']);
         }
 
-        /*** Test Delete Item ***/
+        /*** Delete Item ***/
         $scope.deleteItem = function(index) {
 			console.log(' ... Delete Item ... ');
 			$location.path('/delete-item/' + $scope.transactions[index].id);
 		}
 		
-        /*** Delete Item ***/
-        $scope.olddeleteItem = function(index) {
-            console.log(' ... Delete Item ... ');
+        /*** Delete Sale ***/
+        $scope.deleteSale = function(index) {
+            console.log(' ... Delete Sale ... ');
             
-            var todel = $scope.transactions[index];
-            $http.get($rootScope.appUrl + '/api/Transactions/view/' + $routeParams['id'] + '.json')
+            var trans = function() {
+            $http
+                .get($rootScope.appUrl + '/api/Transactions/bySaleId/' + $routeParams['id'] + '.json')
                 .success(function(data, status, headers, config) {
-                    console.log(' ... Got Transaction To Delete ... ');
-                    $window.$scope.transaction = data.transaction;
+					var count = data.transaction.length;
+                    $scope.transaction = data.transaction;
+
+                    if ( count > 0) {
+			            console.log(' ... Transactions Found!!! ... ' + count + ' ... ');
+			            alert(' ... Transactions Found!!! ... ' + count + ' ... '); 
+		            } else {
+						$scope.sale.status = "Void";
+						delete $scope.sale.customer;
+                        delete $scope.sale.employee;
+                        delete $scope.sale.created;
+            
+                        $scope.sale.modified = dateTime;
+            
+                        var _data = $scope.sale;
+                        $http
+                            .put($rootScope.appUrl + '/api/Sales/edit/' + $routeParams['id'] + '.json', _data)
+                            .success(function(data, status, headers, config) {
+					            $location.path('/sales/');
+				            });
+			            
+		            }
+
                 });
-                
+            }
+            trans();
+                                
         }
         
 	});

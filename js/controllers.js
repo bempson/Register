@@ -79,5 +79,34 @@
             //$location.path('/login');
         };
     });
+    
+    /*********************************************
+	 * Test  Controller
+	 *********************************************/
+	as.controller('TestPageCtrl', function($scope, $rootScope, $http, $location, $timeout) {
+		
+		console.log(' ... TEST PAGE!!! ... ');
+		$scope.transaction = {};
+		
+        var transid = 6;		
+        var trans = function() {
+
+            $http
+                .get($rootScope.appUrl + '/api/Transactions/bySaleId/' + transid + '.json')
+                .success(function(data, status, headers, config) {
+				    var count = data.transaction.length;
+                    $scope.transaction = data.transaction;
+
+                    if ( count > 0) {
+			            console.log(' ... Transactions Found!!! ... ' + count + ' ... '); 
+		            } else {
+			            console.log(' ... NO Transactions Found!!! ... ' + count + ' ... ');
+		            }
+		        });
+         }
+         
+         trans();
+            
+	});
 
 }());
