@@ -1,12 +1,15 @@
-<div>
+<div ng-controller="TestPageCtrl">
+	<h1>For Testing functions</h1>
 	<div>
 		<p>Transaction Object</p>
-	    <p>ID: {{transactions.id}}</p>
+	    <p>ID: {{transaction.0.id}}</p>
+	</div>
+	<div>
+		<p>Transaction Lenght</p>
+	    <p>Length: {{transaction.length}}</p>
 	</div>
 	
    <div>
-       <a ng-click="newSale" href="#/new-sale">
-			<button type="button" class="btn btn-success">New Sale</button>
-	   </a>
+
     </div>
 </div>

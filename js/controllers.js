@@ -83,21 +83,29 @@
     /*********************************************
 	 * Test  Controller
 	 *********************************************/
-	as.controller('LoginCtrl', function($scope, $rootScope, $http, $location) {
+	as.controller('TestPageCtrl', function($scope, $rootScope, $http, $location, $timeout) {
 		
 		console.log(' ... TEST PAGE!!! ... ');
-        var id = 7;		
+		$scope.transaction = {};
+		
+        var transid = 6;		
         var trans = function() {
-            $http.get($rootScope.appUrl + '/api/Transactions/bySaleId/' + id + '.json')
-                    .success(function(data, status, headers, config) {
-                        $scope.transactions = data.transaction;
 
-                        console.log($scope.transactions);
-                    });
+            $http
+                .get($rootScope.appUrl + '/api/Transactions/bySaleId/' + transid + '.json')
+                .success(function(data, status, headers, config) {
+				    var count = data.transaction.length;
+                    $scope.transaction = data.transaction;
+
+                    if ( count > 0) {
+			            console.log(' ... Transactions Found!!! ... ' + count + ' ... '); 
+		            } else {
+			            console.log(' ... NO Transactions Found!!! ... ' + count + ' ... ');
+		            }
+		        });
          }
-         trans();
-         var obj = JSON.parse($scope.transactions);
          
+         trans();
             
 	});
 
