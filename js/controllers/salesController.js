@@ -14,7 +14,7 @@
         var load = function() {
 
             console.log('... Sales Controller ... ');
-            $http.get($rootScope.appUrl + '/api/Sales.json')
+            $http.get($rootScope.appUrl + '/api/Sales/paid.json')
 
                     .success(function(data, status, headers, config) {
                         console.log(' ... We have all Sales Records ... ');
@@ -243,23 +243,34 @@
             $location.path('/add-item/' + $routeParams['id']);
         }
 
-        /*** Test Delete Item ***/
-        $scope.deleteItem = function(index) {
-			console.log(' ... Delete Item ... ');
-			$location.path('/delete-item/' + $scope.transactions[index].id);
-		}
-		
         /*** Delete Item ***/
-        $scope.olddeleteItem = function(index) {
+        $scope.deleteSale = function(index) {
             console.log(' ... Delete Item ... ');
             
-            var todel = $scope.transactions[index];
-            $http.get($rootScope.appUrl + '/api/Transactions/view/' + $routeParams['id'] + '.json')
-                .success(function(data, status, headers, config) {
-                    console.log(' ... Got Transaction To Delete ... ');
-                    $window.$scope.transaction = data.transaction;
-                });
-                
+            var trans = function() {
+            $http.get($rootScope.appUrl + '/api/Transactions/bySaleId/' + $routeParams['id'] + '.json')
+                    .success(function(data, status, headers, config) {
+                        $scope.transactions = data.transaction;
+
+                        console.log($scope.transactions);
+                    });
+            }
+            trans();
+            
+            $scope.sale.status = "Void";
+            
+            delete $scope.sale.customer;
+            delete $scope.sale.employee;
+            delete $scope.sale.created;
+            
+            $scope.sale.modified = dateTime;
+            
+            var _data = $scope.sale;
+            $http.put($rootScope.appUrl + '/api/Sales/edit/' + $routeParams['id'] + '.json', _data)
+                 .success(function(data, status, headers, config) {
+					 $location.path('/sales/');
+				  });
+                                
         }
         
 	});

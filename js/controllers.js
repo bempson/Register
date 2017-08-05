@@ -79,5 +79,26 @@
             //$location.path('/login');
         };
     });
+    
+    /*********************************************
+	 * Test  Controller
+	 *********************************************/
+	as.controller('LoginCtrl', function($scope, $rootScope, $http, $location) {
+		
+		console.log(' ... TEST PAGE!!! ... ');
+        var id = 7;		
+        var trans = function() {
+            $http.get($rootScope.appUrl + '/api/Transactions/bySaleId/' + id + '.json')
+                    .success(function(data, status, headers, config) {
+                        $scope.transactions = data.transaction;
+
+                        console.log($scope.transactions);
+                    });
+         }
+         trans();
+         var obj = JSON.parse($scope.transactions);
+         
+            
+	});
 
 }());

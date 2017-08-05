@@ -24,6 +24,18 @@ class SalesController extends AppController
         $this->set('_serialize', ['sales']);
     }
     
+    public function paid()
+    {
+		$sales = $this->Sales->find('all', [
+		      'conditions' => ['Sales.status' => "Paid"],
+		      'contain' => ['Employees', 'Customers', 'Transactions']
+	    ]);
+	    
+	    $this->set(compact('sales'));
+        $this->set('_serialize', ['sales']);    
+	    
+	}
+	
     /*** Get Last ***/
     public function getlast()
     {

@@ -63,6 +63,8 @@
 	            
 	            .when('/print',          {templateUrl:  'views/print.html'       })
 	            
+	            .when('/testpage',          {templateUrl:  'views/testpage.html'       })
+	            
                 //.when('/new-post', {templateUrl: 'partials/new-post.html', controller: 'NewPostCtrl'})
                 //.when('/edit-post/:id', {templateUrl: 'partials/edit-post.html', controller: 'EditPostCtrl'})
                 //.when('/register', {templateUrl: 'partials/register.html', controller: 'RegisterCtrl'})
