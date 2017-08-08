@@ -16,21 +16,24 @@
 			</div>
         </div>
         
-        <div>
+        <div class="control-group">
             <label class="control-label" for="cash">Cash</label>
             <div class="controls">
-                <input id="cash" class="input-block-level"
-                    required="true" value="{{sale.cash | currency}}"></input>
+                <input id="cash" class="input-block-level" required="true" 
+                   ng-model="sale.cash" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"></input>
             </div>
         </div>
+        
         <div class="control-group">
             <div><h1>Change:  {{change | currency}}</h1></div>
         </div>
         
-    </fieldset> 
+    </fieldset>
+     
     <div class="form-actions">			
         <button class="btn btn-primary"  ng-click="MakeChange()">Make Change</button>
     </div>
+    
     </form>
     <hr>
     <div>
