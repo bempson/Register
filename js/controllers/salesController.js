@@ -3,7 +3,7 @@
 	var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date+' '+time;
+    var dateTime = date+" "+time;
     
     var as = angular.module('crafts.controllers');
    
@@ -49,47 +49,57 @@
 		
 		$scope.change = 0.00;
 		$scope.payment = ["Cash", "Check", "Charge"];
-		$scope.sale.cash = 0.00;
+		//$scope.sale.cash = 0.00;
 		
 		var sale = function() {
             console.log(' ... Current Sale ... ');
             $http.get($rootScope.appUrl + '/api/Sales/getOne/' + $routeParams['id'] + '.json')
-                    .success(function(data, status, headers, config) {
-                        $scope.sale = data.sale;
-                        $scope.sale.cash = 0.00;
+                 .success(function(data, status, headers, config) {
+						
+					console.log('Got Sale');
+					console.log(data);
+						
+                    $scope.sale = data.sale;
+                        //$scope.sale.cash = 0.00;
                         $scope.sale.type = 'Blank';
+                        
                     });
         }
 
         sale();
 
         $scope.UpdatePayment = function() {
-			console.log(' UPDATE PAYMENT ');
-			
-            if ( $scope.sale.type == "Cash") {
-				console.log(' CASH SELECTED!! ');
-			    $scope.sale.cash = 0.00;
-			} else {
+            if ( $scope.sale.type != "Cash") {
 				$scope.sale.cash = $scope.sale.amount;
 			}
-			
         }
         
+        console.log($scope.sale);
         $scope.MakeChange = function() {
 			console.log(' ....Making Change....  ' );
+			
             $scope.change = $scope.sale.cash - $scope.sale.amount;
-            $scope.sale.change = $scope.change;
+            $scope.sale.chnge = parseFloat( $scope.change.toFixed(2) );
+            
+            if ( $scope.sale.type != "Cash") {
+				$scope.sale.cash = 0.00;
+			}
+			
             $scope.sale.status = "Paid";
             
             delete $scope.sale.customer;
             delete $scope.sale.employee;
             delete $scope.sale.created;
+            delete $scope.sale.modified;
             
             $scope.sale.modified = dateTime;
+            console.log($scope);
             
             var _data = $scope.sale;
             $http.put($rootScope.appUrl + '/api/Sales/edit/' + $routeParams['id'] + '.json', _data)
-                 .success(function(data, status, headers, config) {});
+                 .success(function(data, status, headers, config) {
+					 alert('   Sale Updated.  Print Reciept!   ');
+			     });
             
         }
 		
@@ -278,9 +288,9 @@
         
 	});
 	
-    /*** 
+    /***************************** 
      * New Item 
-     ***/
+     *****************************/
     as.controller('NewItemCtrl', function($scope, $rootScope, $http, $routeParams, $location) {
 		
 		console.log('... Adding A New Item ... ');
@@ -298,6 +308,7 @@
                          $scope.sales = data.sale;
 		});
 		
+		/***  Get Products ***/
 		var products = function() {
             $http.get($rootScope.appUrl + '/api/Products.json')
                 .success( function(data, status, headers, config) {
@@ -342,31 +353,27 @@
 		
 		$scope.updateTransaction = function() {
             console.log('call updateTransaction');
-            var _data = {};
-                
+            
             if ($scope.transaction.taxable == true) {
 			    $scope.transaction.taxable = '1';
 			} else {
-				$scope.transaction.taxable = '0';
+			    $scope.transaction.taxable = '0';
 			}
             
-            
-            _data = $scope.transaction;
+            var _data = $scope.transaction;
                 			    
             $http.post($rootScope.appUrl + '/api/Transactions/add/add.json', _data)
                 .success(function(data, status, headers, config) {
-						
-					var _data = {};
-					var _sale = {};
-						
+
 					$scope.transaction = data.transaction;
+					
 					$scope.product.id = $scope.transaction.product_id;
 					$scope.product.units_in_stock = $scope.product.units_in_stock - $scope.transaction.quantity;
 			
 					delete $scope.product.created;
 					delete $scope.product.modified;
                         
-					_data = $scope.product;
+					var _data = $scope.product;
 						
 					$http.put($rootScope.appUrl + '/api/Products/edit/' + $scope.product.id + '.json', _data)
                          .success(function(data, status, headers, config) {})
@@ -377,18 +384,22 @@
                     $scope.sales.tax      = $scope.sales.tax + $scope.transaction.tax;
                     $scope.sales.amount   = $scope.sales.amount + $scope.transaction.amount;
                     
+                    delete $scope.sales.customer;
+                    delete $scope.sales.employee;
+                    delete $scope.sales.transactions
                     delete $scope.sales.created;
 					delete $scope.sales.modified;
-                        
-					_sale = $scope.sales;
-						
+                    
+                    console.log(' --- Sales Information --- ');
+                    console.log($scope.sales);
+					var _sale = $scope.sales;
+					console.log(_sale);	
+					
                     $http.put($rootScope.appUrl + '/api/Sales/edit/' + $routeParams['id'] + '.json', _sale)
                         .success(function(data, status, headers, config) {
 							$location.path('/edit-Sale/' + $routeParams['id']);
-						});
-                        
-						
-                })
+						 });
+                 })
                 .error(function(data, status, headers, config) {});
             }
 		/*  */
