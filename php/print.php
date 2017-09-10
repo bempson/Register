@@ -1,9 +1,8 @@
 <?php
 
+$id = $argv[1];
 
 $tod = date("Y-m-d H:i:s");
-
-$id = 11;
 
 $url = 'http://localhost/register/api/Sales/getone/'.$id.'.json';
 $data = getUrlContent($url, $id);
@@ -30,14 +29,21 @@ echo "---------------------------" . PHP_EOL;
 foreach ( $trans as $tran ) {
     foreach ( $tran as $value ) {
 		echo str_pad($value['quantity'], 4); 
-		//echo str_pad(substr($value['product']['name'], 20), 4);
-		echo str_pad($value['product']['name'], 5);
-		//echo $value['amount'];
+		echo $value['product']['name'] . PHP_EOL;
+		echo "                 $" . $value['amount'];
 		echo PHP_EOL;
-		//print_r($value);
 	}	
 }
 
+echo PHP_EOL;
+echo "---------------------------" . PHP_EOL;
+echo "            Tax: $" . $sale['sale']['tax'] . PHP_EOL;
+echo "            Sub: $" . $sale['sale']['subtotal'] . PHP_EOL;
+echo "          Total: $" . $sale['sale']['amount'] . PHP_EOL;
+echo "---------------------------" . PHP_EOL;
+echo "           Cash: $" . $sale['sale']['cash'] . PHP_EOL;
+echo "         Change: $" . $sale['sale']['chnge'] . PHP_EOL;
+echo PHP_EOL;
 
 exit;
 
