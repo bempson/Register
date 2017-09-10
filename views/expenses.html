@@ -1,0 +1,53 @@
+<div ng-controller="ExpensesCtrl">
+	
+    <h1 class="page-header">Expenses</h1>
+    	
+	<div>
+       <a ng-click="newTrans" href="#/new-trans">
+			<button type="button" class="btn btn-primary">New Transaction</button>
+	   </a>
+    </div>
+    <hr>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th width="25px">ID</th>
+                <th>SalesID</th>
+                <th>ProductID </th>
+                <th>Quantity </th>
+                <th>Price </th>
+                <th>Subtotal </th>
+                <th>Tax </th>
+                <th>Amount </th>
+                <th>Taxable </th>
+                <th width="25px">EDIT</th>
+                <th width="25px">DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="e in transactions">
+                <td>{{e.id}}</td>
+                <td>{{e.sale_id}}</td>
+                <td>{{e.product_id}}</td>
+                <td>{{e.quantity}}</td>
+                <td>{{e.price | currency}}</td>
+                <td>{{e.subtotal | currency}}</td>
+                <td>{{e.tax | currency}}</td>
+                <td>{{e.amount | currency}}</td>
+                <td>{{e.taxable}}</td>
+                <td>
+					<a ng-click="editTrans($index)">
+					    <i class="fa fa-file-text" aria-hidden="true"></i>
+                    </a>
+                </td>
+                <td>     
+                    <a ng-click="delPost($index)">
+						<i class="fa fa-eraser" aria-hidden="true"></i>
+				    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

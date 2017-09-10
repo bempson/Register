@@ -61,6 +61,8 @@
 	            .when('/new-post',       {templateUrl: 'views/new-post.html'     })
 	            .when('/edit-post/:id',  {templateUrl: 'views/edit-post.html'    })
 	            
+	            .when('expenses',        {templateUrl: 'views/expenses.html'     })
+	            
 	            .when('/print',          {templateUrl:  'views/print.html'       })
 	            
 	            .when('/testpage',          {templateUrl:  'views/testpage.html'       })

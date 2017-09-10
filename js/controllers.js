@@ -27,7 +27,8 @@
             $location.url('/');
         };
 
-        $rootScope.appUrl = "http://register";
+        var ip = location.host;
+        $rootScope.appUrl = "http://"+ip +"/register";
         //$rootScope.appUrl = "http://10.186.38.251/crafts-af";
 
     });
