@@ -57,8 +57,21 @@ class SalesController extends AppController
         $this->set('sale', $sale);
         $this->set('_serialize', ['sale']);
     }
+    
+    /*** Receipt method ***/
+    public function receipt($id = null)
+    {
+		
+		            
+        $sale = $this->Sales->get($id, [
+            'contain' => ['Employees', 'Customers', 'Transactions']
+        ]);
 
-    /*** View method ***/
+        $this->set('sale', $sale);
+        $this->set('_serialize', ['sale']);
+    }
+    
+    /*** GetOne method ***/
     public function getOne($id = null)
     {
         $sale = $this->Sales->get($id, [
